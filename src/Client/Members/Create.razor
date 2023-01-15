@@ -1,0 +1,72 @@
+﻿@page "/member/create"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Administrator")]
+
+<h3 class="title">
+    Add member
+</h3>
+<EditForm Model="@member" OnValidSubmit="CreateMemberAsync">
+    <FluentValidationValidator />
+    <ValidationSummary/>
+    <div class="columns">
+        <div class="column">
+            <div class="field">
+                <label class="label">First name</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="member.FirstName"/>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="field">
+                <label class="label">Last name</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="member.LastName"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="member.Email"/>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="field">
+                <label class="label">Twitter</label>
+                <div class="control">
+                    <InputText class="input" @bind-Value="member.TwitterHandle"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="columns">
+        <div class="column is-half">
+            <div class="field">
+                <label class="label">Group</label>
+                <div class="control is-expanded">
+                    <div class="select is-fullwidth">
+                        <InputSelect @bind-Value="member.GroupId">
+                            <option disabled selected value="0">-- Select a group --</option>
+                                @foreach (var group in groups)
+                                {
+                                        <option value="@group.Id">@group.Name</option>
+                                }
+                        </InputSelect>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <button class="button is-link is-fullwidth" type="submit">Add</button>
+        <a href="/" class="button is-link is-light is-fullwidth">Cancel</a>
+    </div>
+</EditForm>
