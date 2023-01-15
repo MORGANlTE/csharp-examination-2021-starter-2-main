@@ -92,10 +92,11 @@ Wanneer een lid is aangemaakt, wordt de gebruiker terug genavigeerd naar de `Mem
 Beantwoord de volgende vragen in-line in deze README.md:
 
 1. Waarom zou je het `Id` van de abstracte klasse `Entity` `virtual` maken?
-    - Antwoord:
+    - Antwoord: Je kan het overschrijven in een subklasse (klasse dat je ervan erft).
 
 2. Wat is het verschil tussen singleton, scoped en transient services? Hoe komt dit naar voor in Blazor WASM versus Blazor Server?
-    - Antwoord:
+    - Antwoord: Singleton is enkel 1x gemaakt & de dezelfde instantie wordt overal gebruikt doorheen de applicatie. Scoped wordt 1x per scope gemaakt & meestal 1x per web applicatie. De transient wordt 1x gemaakt per keer dat het gevraagd werd.
+    In Blazor WebAssembly worden de services vaak als singelton geregistreerd, daardoor alle geheugen voor de tijd dat de toepassing draait. In Blazor Server worden de services als scoped geregistreerd.
 
 ---
 
